@@ -1,0 +1,52 @@
+In this project, I was instructed to:
+make your own table with some small set of “famous people”, 
+then make more tables about things they do and join those to create nice human readable lists.
+
+/* Create table about the people and what they do here */
+
+CREATE TABLE authors (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT);
+
+INSERT INTO authors (fullname) VALUES ("Jane Austen");
+INSERT INTO authors (fullname) VALUES ("Nicholas Sparks");
+INSERT INTO authors (fullname) VALUES ("Edgar Allan Poe");
+INSERT INTO authors (fullname) VALUES ("Gillian Flynn");
+INSERT INTO authors (fullname) VALUES ("Larry McMurtry");
+
+CREATE table genre (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    authors_id INTEGER,
+    name TEXT);
+    
+INSERT INTO genre (authors_id, name) VALUES (1, "romance");
+INSERT INTO genre (authors_id, name) VALUES (2, "romance");
+INSERT INTO genre (authors_id, name) VALUES (3, "mystery");
+INSERT INTO genre (authors_id, name) VALUES (4, "mystery");
+INSERT INTO genre (authors_id, name) VALUES (5, "Western");
+
+CREATE table best_seller (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    authors_id INTEGER,
+    name TEXT);
+
+INSERT INTO best_seller (authors_id, name) VALUES (1, "Pride and Prejudice");
+INSERT INTO best_seller (authors_id, name) VALUES (2, "The Notebook");
+INSERT INTO best_seller (authors_id, name) VALUES (3, "The Raven");
+INSERT INTO best_seller (authors_id, name) VALUES (4, "Gone Girl");
+INSERT INTO best_seller (authors_id, name) VALUES (5, "Lonesome Dove");
+
+-- What was the best-selling book for each author?
+
+  Select authors.fullname, best_seller.name
+  from authors
+  Join best_seller
+  on authors.id=best_seller.authors_id;
+
+-- What was the genre of each best seller and who wrote that specific best seller?
+  
+  Select  best_seller.name as best_seller, genre.name as genre, authors.fullname
+  from authors
+  Join best_seller
+  On authors.id=best_seller.authors_id
+  Join genre
+  ON authors.id=genre.authors_id;
