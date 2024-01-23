@@ -1,14 +1,13 @@
-SELECT COUNT(orderid)
-FROM BIT_DB.JanSales
-WHERE length(orderid) = 6
-AND orderid <> 'Order ID';
+--'m extracting statistical insights from a database that contains several tables, aiming to analyze and quantify statistical data related to customers and orders.
 
+  1. How many orders were placed in January?
 SELECT COUNT(orderid)
 FROM BIT_DB.JanSales
 WHERE Product='iPhone'
 AND length(orderid) = 6
 AND orderid <> 'Order ID';
 
+-- 2.
 SELECT distinct acctnum
 FROM BIT_DB.customers customers
 INNER JOIN BIT_DB.FebSales FebSales
