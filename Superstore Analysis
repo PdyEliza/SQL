@@ -42,3 +42,10 @@ FROM superstore;
 SELECT AVG(price)
 FROM superstore
 WHERE category = "Kitchen Supplies"; 
+
+-- Write a query that retrieves the item names in the table for items that are prices higher or equal to 50 dollars. 
+-- Order the results so that the prices are listed from highest to lowest.
+SELECT item_name, price
+FROM superstore
+WHERE price >= 50
+ORDER BY price DESC;
